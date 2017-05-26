@@ -19,12 +19,16 @@ public class RentServiceImpl implements RentService {
     private ConfigurationService configurationService;
 
     public RentServiceImpl() {
-        this.rentItemRepository = (RentItemRepository) App.getBean(App.BEAN_RENT_ITEM);
+        this.rentItemRepository = (RentItemRepository) App.getBean(App.BEAN_RENT_ITEM_REPOSITORY);
         this.configurationService = (ConfigurationService) App.getBean(App.BEAN_CONFIGURATION_SERVICE);
     }
 
     @Override
     public void assignComputer(Computer computer) {
+
+        if (computer == null) {
+            throw new RuntimeException("Invalid computer");
+        }
 
         RentItem rentItem = rentItemRepository.findOccupiedComputer(computer);
 

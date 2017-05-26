@@ -11,4 +11,6 @@ public interface ComputerService {
     void delete(Computer user);
 
     Collection<Computer> getAll();
+
+    Computer findById(String selectedOption);
 }

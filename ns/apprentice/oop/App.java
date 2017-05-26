@@ -15,14 +15,13 @@ import ns.apprentice.oop.ciber.view.impl.ComputerView;
 import ns.apprentice.oop.ciber.view.impl.RentView;
 import ns.apprentice.oop.ciber.view.impl.UserView;
 
-//Use javac -classpath . ns/apprentice/oop/App.java  to compile
+//Use javac -d target -classpath . ns/apprentice/oop/App.java to compile
 public class App {
 
     public static final String BEAN_MAIN_VIEW = "MAIN_VIEW";
     public static final String BEAN_COMPUTER_VIEW = "COMPUTER_VIEW";
     public static final String BEAN_USER_VIEW = "USER_VIEW";
     public static final String BEAN_RENT_VIEW = "RENT_VIEW";
-    public static final String BEAN_RENT_ITEM = "RENT_ITEM";
 
     public static final String BEAN_COMPUTER_REPOSITORY = "COMPUTER_REPOSITORY";
     public static final String BEAN_USER_REPOSITORY = "USER_REPOSITORY";
@@ -58,7 +57,12 @@ public class App {
         CiberUI ciberUI = (CiberUI) App.getBean(BEAN_MAIN_VIEW);
 
         do {
-            ciberUI = ciberUI.execute();
+            try {
+                ciberUI = ciberUI.execute();
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                ciberUI = (CiberUI) App.getBean(BEAN_MAIN_VIEW);
+            }
         } while (ciberUI != null);
 
     }

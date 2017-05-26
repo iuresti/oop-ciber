@@ -12,4 +12,5 @@ public interface ComputerRepository {
 
     Collection<Computer> getAll();
 
+    Computer findById(String computerId);
 }

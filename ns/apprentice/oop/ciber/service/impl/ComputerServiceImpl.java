@@ -29,4 +29,9 @@ public class ComputerServiceImpl implements ComputerService {
     public Collection<Computer> getAll() {
         return computerRepository.getAll();
     }
+
+    @Override
+    public Computer findById(String computerId) {
+        return computerRepository.findById(computerId);
+    }
 }

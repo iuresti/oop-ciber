@@ -4,7 +4,8 @@ import java.util.Collection;
 import java.util.Scanner;
 
 import ns.apprentice.oop.App;
-import ns.apprentice.oop.ciber.model.RentItem;
+import ns.apprentice.oop.ciber.model.Computer;
+import ns.apprentice.oop.ciber.service.ComputerService;
 import ns.apprentice.oop.ciber.service.RentService;
 import ns.apprentice.oop.ciber.view.CiberUI;
 
@@ -12,8 +13,11 @@ public class RentView implements CiberUI {
 
     private RentService rentService;
 
+    private ComputerService computerService;
+
     public RentView() {
         this.rentService = (RentService) App.getBean(App.BEAN_RENT_SERVICE);
+        this.computerService = (ComputerService) App.getBean(App.BEAN_COMPUTER_SERVICE);
     }
 
     @Override
@@ -21,39 +25,28 @@ public class RentView implements CiberUI {
 
         System.out.println("Free computers");
         System.out.println();
+
+        Collection<Computer> computers = computerService.getAll();
+
+        for (Computer computer : computers) {
+            if (!computer.isOccupied()) {
+                System.out.println(computer.getId() + " - " + computer.getOperativeSystem());
+            }
+        }
+
         System.out.println();
-        System.out.println("1. List rents");
-        System.out.println("2. Back to main menu");
+
+        System.out.println("Enter id of computer to assign:");
 
         Scanner scanner = new Scanner(System.in);
 
-        int selectedOption = scanner.nextInt();
+        String selectedOption = scanner.nextLine();
 
-        return getNextView(selectedOption);
+        Computer computer = computerService.findById(selectedOption);
+
+        rentService.assignComputer(computer);
+
+        return (CiberUI) App.getBean(App.BEAN_MAIN_VIEW);
     }
 
-    private CiberUI getNextView(int selectedOption) {
-        switch (selectedOption) {
-            case 1:
-                printRents();
-                break;
-            case 2:
-                return (CiberUI) App.getBean(App.BEAN_MAIN_VIEW);
-        }
-
-        return (CiberUI) App.getBean(App.BEAN_COMPUTER_VIEW);
-    }
-
-    private void printRents() {
-
-        Collection<RentItem> rents = rentService.getAll();
-
-        for (RentItem rentItem : rents) {
-            System.out.println(rentItem);
-        }
-
-        System.out.println();
-        System.out.println();
-
-    }
 }

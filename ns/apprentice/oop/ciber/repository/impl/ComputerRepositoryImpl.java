@@ -62,4 +62,9 @@ public class ComputerRepositoryImpl implements ComputerRepository {
     public Collection<Computer> getAll() {
         return computers.values();
     }
+
+    @Override
+    public Computer findById(String computerId) {
+        return computers.get(computerId);
+    }
 }
