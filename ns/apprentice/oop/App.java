@@ -12,6 +12,7 @@ import ns.apprentice.oop.ciber.service.impl.UserServiceImpl;
 import ns.apprentice.oop.ciber.view.CiberUI;
 import ns.apprentice.oop.ciber.view.impl.CiberUIMainMenu;
 import ns.apprentice.oop.ciber.view.impl.ComputerView;
+import ns.apprentice.oop.ciber.view.impl.ReleaseView;
 import ns.apprentice.oop.ciber.view.impl.RentView;
 import ns.apprentice.oop.ciber.view.impl.UserView;
 
@@ -22,6 +23,7 @@ public class App {
     public static final String BEAN_COMPUTER_VIEW = "COMPUTER_VIEW";
     public static final String BEAN_USER_VIEW = "USER_VIEW";
     public static final String BEAN_RENT_VIEW = "RENT_VIEW";
+    public static final String BEAN_RELEASE_VIEW = "BEAN_RELEASE_VIEW";
 
     public static final String BEAN_COMPUTER_REPOSITORY = "COMPUTER_REPOSITORY";
     public static final String BEAN_USER_REPOSITORY = "USER_REPOSITORY";
@@ -49,6 +51,7 @@ public class App {
         beans.put(BEAN_COMPUTER_VIEW, new ComputerView());
         beans.put(BEAN_USER_VIEW, new UserView());
         beans.put(BEAN_RENT_VIEW, new RentView());
+        beans.put(BEAN_RELEASE_VIEW, new ReleaseView());
         beans.put(BEAN_MAIN_VIEW, new CiberUIMainMenu());
     }
 

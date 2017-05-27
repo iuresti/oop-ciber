@@ -16,7 +16,8 @@ public class CiberUIMainMenu implements CiberUI {
         System.out.println("1. Computer");
         System.out.println("2. User");
         System.out.println("3. Rent");
-        System.out.println("4. Quit");
+        System.out.println("4. Release computer");
+        System.out.println("5. Quit");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -34,6 +35,8 @@ public class CiberUIMainMenu implements CiberUI {
             case 3:
                 return (CiberUI) App.getBean(App.BEAN_RENT_VIEW);
             case 4:
+                return (CiberUI) App.getBean(App.BEAN_RELEASE_VIEW);
+            case 5:
                 return null;
         }
         return (CiberUI) App.getBean(App.BEAN_MAIN_VIEW);
