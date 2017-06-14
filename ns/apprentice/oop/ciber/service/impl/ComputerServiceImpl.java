@@ -1,6 +1,7 @@
 package ns.apprentice.oop.ciber.service.impl;
 
 import java.util.Collection;
+import java.util.List;
 
 import ns.apprentice.oop.App;
 import ns.apprentice.oop.ciber.model.Computer;
@@ -33,5 +34,10 @@ public class ComputerServiceImpl implements ComputerService {
     @Override
     public Computer findById(String computerId) {
         return computerRepository.findById(computerId);
+    }
+
+    @Override
+    public void createReportOfComputers(List<Computer> computerList) {
+        computerList.forEach(System.out::println);
     }
 }

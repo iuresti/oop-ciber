@@ -1,7 +1,5 @@
 package ns.apprentice.oop.ciber.model;
 
-import java.util.List;
-
 public class Computer {
 
     private String id;
@@ -71,7 +69,5 @@ public class Computer {
                 '}';
     }
 
-    public void createReportOfComputers(List<Computer> computerList) {
-        computerList.forEach(System.out::println);
-    }
+
 }
