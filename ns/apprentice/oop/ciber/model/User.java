@@ -32,6 +32,10 @@ public class User {
         this.registerDate = registerDate;
     }
 
+    public void printUsers() {
+
+    }
+
     @Override
     public String toString() {
         return "User{" +
