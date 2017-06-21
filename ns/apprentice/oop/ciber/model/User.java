@@ -17,7 +17,7 @@ public class User {
     }
 
     public String getFullName() {
-        return fullName + fullName + fullName;
+        return fullName;
     }
 
     public void setFullName(String fullName) {
